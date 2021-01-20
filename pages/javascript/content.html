@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/icon.png" type="image/png">
+    <link rel="stylesheet" href="../../styles/master.css">
+    <script src="../../scripts/prism.js" defer></script>
+    <script src="test.js" defer></script>
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li><a href="../../index.html"><img src="../../images/home.png" alt="Index"></a></li>
+            <li><a href="index.html"><img src="../../images/index.png" alt="Index"></a></li>
+            <li>
+                <a href="https://github.com/Jamezuki/notes" target="_blank">
+                    <img src="../../images/github.png" alt="Github">
+                </a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <!-- #region basics -->
+        <h1 id="basics">Basics</h1>
+        <ul>
+            <li>Just-In-Time (compiled at runtime)</li>
+            <li>Client-side</li>
+            <li>Server-side with Node.js</li>
+            <li>Dynamically typed</li>
+        </ul>
+        <h2>Variables</h2>
+        <ul>
+            <li>Only letters, digits, $, _.</li>
+            <li>The first character must not be a digit.</li>
+            <li><strong>Should not be declared twice</strong></li>
+        </ul>
+        <pre><code class="lang-js">
+let x = 5;
+let x = 8; // ERROR</code></pre>
+        <h3>let</h3>
+        <ul>
+            <li>cammelCase</li>
+            <li>Not bound to data types.</li>
+        </ul>
+        <pre><code class="lang-js">
+let magicNumber = 30;
+magicNumber = 'string'; // No error</code></pre>
+        <h3>const</h3>
+        <ul>
+            <li>CAPITALS</li>
+            <li>snake_case</li>
+        </ul>
+        <pre><code class="lang-js">
+const MAGIC_NUMBER = 30;</code></pre>
+        <h2>Data types</h2>
+        <p>8 data types:</p>
+        <h3>Primitives</h3>
+        <ol>
+            <li>undefined
+                <pre><code class="lang-js">
+let x;
+typeof(x); //undefined</code></pre>
+            </li>
+            <li>null
+                <pre><code class="lang-js">
+let x = null;
+typeof(x); // null</code></pre>
+            </li>
+            <li>boolean
+                <pre><code class="lang-js">
+let x = true;
+typeof(x); // boolean</code></pre>
+            </li>
+            <li>number
+                <pre><code class="lang-js">
+// MIN_SAFE_INTEGER: -2<sup>53</sup>-1
+// MAX_SAFE_INTEGER: 2<sup>53</sup>-1
+let x = 2;
+typeof(x); // number</code></pre>
+            </li>
+            <li>string
+                <pre><code class="lang-js">
+let x = "Hello";
+let x = 'Hello';
+let x = `Hello ${y}`;
+typeof(x); // string</code></pre>
+            </li>
+            <li>bigint
+                <p>Arbitrary length</p>
+                <pre><code class="lang-js">
+let x = 2n;
+typeof(x); // bigint</code></pre>
+            </li>
+            <li>symbol
+                <ul>
+                    <li>Unique and immutable.</li>
+                    <li>May be used as the key of an Object.</li>
+                </ul>
+                <pre><code class="lang-js">
+let x = Symbol("x");
+typeof(x); // symbol</code></pre>
+            </li>
+        </ol>
+        <h3>Structural</h3>
+        <ol start="8">
+            <li>Object
+                <p>Data structure with properties and methods.</p>
+                <p>Everything made with <strong>new</strong> keyword.</p>
+            </li>
+        </ol>
+        <h2>Logical operators</h2>
+        <table>
+            <tr>
+                <th>||</th>
+                <td>OR</td>
+            </tr>
+            <tr>
+                <th>&&</th>
+                <td>AND</td>
+            </tr>
+            <tr>
+                <th>!</th>
+                <td>NOT</td>
+            </tr>
+        </table>
+        <strong>Precedence of && is higher than ||</strong>
+        <p>a && b || c && d <strong>==</strong> (a && b) || (c && d)</p>
+        <h2>Falsy values</h2>
+        <ul>
+            <li>false</li>
+            <li>undefined</li>
+            <li>null</li>
+            <li>0</li>
+            <li>NaN</li>
+            <li>'', "", ``</li>
+        </ul>
+        <strong>Everything else returns true.</strong>
+        <h2>Comparators</h2>
+        <ul>
+            <li>&gt;</li>
+            <li>&lt;</li>
+            <li>&gt;=</li>
+            <li>&lt;=</li>
+            <li>==</li>
+            <li>!=</li>
+            <li>===
+                <ul>
+                    <li>Strict equal</li>
+                    <li>Compares value and data type.</li>
+                </ul>
+                <pre><code class="lang-js">
+let x = 0;
+let y = false;
+x == y // true
+x === y // false</code></pre>
+            </li>
+        </ul>
+        <hr>
+        <!--#endregion-->
+
+        <!-- #region numbers -->
+        <h1 id="numbers">Numbers</h1>
+        <h2>Exponentiation</h2>
+        <pre><code class="lang-js">
+let x = 5 ** 2;</code></pre>
+        <h2>Round to fixed decimals</h2>
+        <pre><code class="lang-js">
+let x = 1.7664325;
+x = x.toFixed(2); // 1.76</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region strings -->
+        <h1 id="strings">Strings</h1>
+        <ul>
+            <li>Primitive data type.</li>
+            <li>Immutable: cannot be changed, only replaced. </li>
+        </ul>
+        <pre><code class="lang-js">
+let x = "Hello";
+let x = 'Hello';
+let x = `Hello ${y}`;</code></pre>
+        <h2>Length</h2>
+        <pre><code class="lang-js">
+let str = 'one';
+str.length; // 3</code></pre>
+        <h2>Concatenate</h2>
+        <pre><code class="lang-js">
+let one = 'Hello, ';
+let two = 'how are you?';
+one + two; // "Hello, how are you?"</code></pre>
+        <p><strong>string + number = string</strong></p>
+        <h2>Template literals (backticks)</h2>
+        <p>unicode + 0060</p>
+        <p>unicode: ctrl + shift + u</p>
+        <pre><code class="lang-js">
+let x = 'James';
+`Hello, ${x}!` // "Hello, James!"
+`The result is ${1 + 2}` // "The result is 3"</code></pre>
+        <h2>Escape characters</h2>
+        <table>
+            <tr>
+                <th>Code</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td>\n</td>
+                <td>line feed</td>
+            </tr>
+            <tr>
+                <td>\t</td>
+                <td>horizontal tab</td>
+            </tr>
+            <tr>
+                <td>\'</td>
+                <td>single quote</td>
+            </tr>
+            <tr>
+                <td>\"</td>
+                <td>double quote</td>
+            </tr>
+            <tr>
+                <td>\\</td>
+                <td>backslash</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region convert -->
+        <h1 id="convert">Convert</h1>
+        <h2>String to Number</h2>
+        <p>Number()</p>
+        <pre><code class="lang-js">
+typeof(Number(str)); // number</code></pre>
+        <h2>Number to String</h2>
+        <p>.toString()</p>
+        <pre><code class="lang-js">
+typeof(num.toString()); // string</code></pre>
+        <h2>String to Array</h2>
+        <p>.split("")</p>
+        <pre><code class="lang-js">
+let s1 = "a,b,c,d,e";
+let a1 = x.split(','); // [a, b, c, d, e]
+
+let s2 = "Hello";
+let a2 = x.split(''); // [H, e, l, l, o]</code></pre>
+        <h2>Uppercase</h2>
+        <p>.toUpperCase()</p>
+        <pre><code class="lang-js">
+let x = str.toUpperCase();</code></pre>
+        <h2>Lowercase</h2>
+        <p>.toLowerCase()</p>
+        <pre><code class="lang-js">
+let x = str.toLowerCase();</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region search -->
+        <h1 id="search">Search</h1>
+        <h2>Index of first match</h2>
+        <p>.indexOf("")</p>
+        <p>.indexOf("", start)</p>
+        <ul>
+            <li>Returns -1 if not found.</li>
+        </ul>
+        <pre><code class="lang-js">
+let str = "01234567895";
+str.indexOf("5"); // 5
+str.indexOf("5", 9); // 10</code></pre>
+        <p>.search("")</p>
+        <pre><code class="lang-js">
+str.search('regex');</code></pre>
+        <h2>Index of last match</h2>
+        <p>.lastIndexOf("")</p>
+        <p>.lastIndexOf("", start)</p>
+        <ul>
+            <li>Searches backwards.</li>
+            <li>Returns -1 if not found.</li>
+        </ul>
+        <pre><code class="lang-js">
+let str = "01234567895";
+str.lastIndexOf("5"); // 10
+str.lastIndexOf("5", 6); // 5</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region extract -->
+        <h1 id="extract">Extract</h1>
+        <h2>Strings</h2>
+        <p>slice(start, end)</p>
+        <p>slice(start)</p>
+        <ul>
+            <li>end not included in the extracted string.</li>
+            <li>If a parameter is negative, the position is counted from the end of the string.</li>
+            <li>If end is omitted returns the rest of the string.</li>
+        </ul>
+        <pre><code class="lang-js">
+let str = "0123456789";
+let x1 = str.slice(2, 4); // 23
+let x2 = str.slice(0, -6); // 012
+let x3 = str.slice(7); // 789</code></pre>
+        <p>substr(start, length)</p>
+        <pre><code class="lang-js">
+let str = "0123456789";
+let x = str.slice(2, 2); // 23</code></pre>
+        <h2>Characters</h2>
+        <p>.charAt(index)</p>
+        <pre><code class="lang-js">
+let str = "0123456789";
+str.charAt(5); // 5</code></pre>
+        <p>str[index]</p>
+        <ul>
+            <li>Strings are not arrays.</li>
+            <li>Read only (strings are immutable).</li>
+            <li>Returns undefined if not found.</li>
+        </ul>
+        <pre><code class="lang-js">
+let str = "0123456789";
+str[5]; // 5</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region replace -->
+        <h1 id="replace">Replace</h1>
+        <p>.replace("old", "new")</p>
+        <ul>
+            <li>Case sensitive.</li>
+            <li>Replaces only the first match.</li>
+            <li>Returns a new string.</li>
+            <li>Regex are written without quotes.</li>
+        </ul>
+        <pre><code class="lang-js">
+let str1 = "Apple, Banana, Kiwi";
+let str2 = str.replace("Banana", "Melon");
+// "Apple, Melon, Kiwi"</code></pre>
+        <p>Case insensitive regex:</p>
+        <pre><code class="lang-js">
+let str3 = str.replace(/BANANA/i, "Melon");</code></pre>
+        <p>Replace all regex:</p>
+        <pre><code class="lang-js">
+let str4 = str.replace(/Banana/g, "Melon");</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-webcomponents -->
+        <h1 id="js-webcomponents">Web components</h1>
+        <h2>Custom element</h2>
+        <p>file.html</p>
+        <pre><code class="lang-js">
+&lt;custom-x&gt;  &lt;/custom-x&gt;</code></pre>
+        <p>file.js</p>
+        <pre><code class="lang-js">
+/* Custom class */
+class CustomX extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 'html code';
+    }
+}
+
+window.customElements.define('custom-x', CustomX);</code></pre>
+        <dl>
+            <dt>constructor()</dt>
+            <dd>Called when an instance of the element is created or upgraded</dd>
+            <dt>connectedCallback()</dt>
+            <dd>Called when the element is inserted into de DOM</dd>
+            <dt>disconnectedCallback()</dt>
+            <dd>Called when the element is removed from the DOM</dd>
+            <dt>attributeChangedCallback(attributeName, oldValue, newValue)</dt>
+            <dd>Called when an attribute is added, removed, updated or replaced</dd>
+        </dl>
+        <h2>Shadow DOM</h2>
+        <ul>
+            <li>Used for self-contained components</li>
+            <li>Encapsulate styles and markup</li>
+        </ul>
+        <h2>HTML Templates</h2>
+        <ul>
+            <li>Define the encapsulated markup</li>
+            <li>Include HTML and CSS in template</li>
+            <li>Use slots to add custom text</li>
+        </ul>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-arrays-array-like -->
+        <h1 id="js-arrays-array-like">Arrays: array-like</h1>
+        <ul>
+            <li>It's not an array</li>
+            <li>Can use .lenght</li>
+        </ul>
+        <h2>to Array</h2>
+        <pre><code class="lang-js">
+// ES5 & IE
+let args = Array.prototype.slice.call(arguments);
+
+// ES6
+let args = Array.from(arguments);</code></pre>
+        <h2>Related</h2>
+        <ul>
+            <li><a href="#js-functions-arguments">Functions: arguments</a></li>
+        </ul>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-arrays-tostring -->
+        <h1 id="js-arrays-tostring">Arrays: toString()</h1>
+        <pre><code class="lang-js">
+let x = [1, 2, 3];
+
+let string = x.join('');
+// '123'
+
+let string = x.toString();
+// '1,2,3'</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-arrays-push-pop -->
+        <h1 id="js-arrays-push-pop">Arrays: push()/pop()</h1>
+        <h2>push()</h2>
+        <p>add to end</p>
+        <pre><code class="lang-js">
+// returns new length
+array.push('text');</code></pre>
+        <h2>pop()</h2>
+        <p>remove from end</p>
+        <pre><code class="lang-js">
+// returns removed item
+array.pop();</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-arrays-unshift-shift -->
+        <h1 id="js-arrays-unshift-shift">Arrays: unshift()/shift()</h1>
+        <h2>unshift()</h2>
+        <p>add to start</p>
+        <pre><code class="lang-js">
+// returns new length
+array.unshift('text');</code></pre>
+        <h2>shift()</h2>
+        <p>remove from start</p>
+        <pre><code class="lang-js">
+// returns removed item
+array.shift();</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-arrays-indexof -->
+        <h1 id="js-arrays-indexof">Arrays: indexOf()</h1>
+        <p>get index of element</p>
+        <pre><code class="lang-js">
+// ["Strawberry", "Banana", "Mango"]
+
+let pos = fruits.indexOf('Banana')
+// 1</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-arrays-splice -->
+        <h1 id="js-arrays-splice">Arrays: splice()</h1>
+        <ul>
+            <li>add/remove items by index</li>
+            <li><strong>returns removed items</strong></li>
+        </ul>
+        <p></p>
+        <table>
+            <tr>
+                <th>start</th>
+                <td>index to start</td>
+            </tr>
+            <tr>
+                <th>deleteCount</th>
+                <td>number of items to be removed</td>
+            </tr>
+            <tr>
+                <th>item1, item2, ..</th>
+                <td>items to be added at start</td>
+            </tr>
+        </table>
+        <pre><code class="lang-js">
+let x = [0, 1, 2, 3];
+
+const start = 1;
+const deleteCount = 2;
+
+let y = x.splice(start, deleteCount, 5, 6)
+
+// x = [0, 5, 6, 3]
+// y = [1, 2]</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-arrays-slice -->
+        <h1 id="js-arrays-slice">Arrays: slice()</h1>
+        <p>slice(start, end)</p>
+        <ul>
+            <li>returns sliced array</li>
+            <li><strong>end not included in the extracted array</strong></li>
+            <li>if a parameter is negative, the position is counted from the end of the string.</li>
+            <li>if start is omitted starts from 0</li>
+            <li>if end is omitted returns the rest of the string</li>
+        </ul>
+        <table>
+            <tr>
+                <th>start</th>
+                <td>index to start</td>
+            </tr>
+            <tr>
+                <th>end</th>
+                <td>index to end</td>
+            </tr>
+        </table>
+        <pre><code class="lang-js">
+const x = [0, 1, 2, 3, 4];
+
+console.log(x.slice(2));
+// [2, 3, 4]
+            
+console.log(x.slice(2, 4));
+// [2, 3]</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-arrays-concat-->
+        <h1 id="js-arrays-concat">Arrays: concat()</h1>
+        <p>.concat(a1, a2, ..)</p>
+        <ul>
+            <li>Concatenate</li>
+            <li>Can take strings as arguments</li>
+        </ul>
+        <pre><code class="lang-js">
+const x = [0, 1, 2];
+const y = [3, 4, 5];
+const z = x.concat(y);
+// z = [0, 1, 2, 3, 4, 5]</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-control-continue-break -->
+        <h1 id="js-control-continue-break">Control: continue/break</h1>
+        <table>
+            <tr>
+                <th>continue;</th>
+                <td>skip interation</td>
+            </tr>
+            <tr>
+                <th>break;</th>
+                <td>exit control structure</td>
+            </tr>
+        </table>
+        <h2>labels</h2>
+        <p>reference for continue and break</p>
+        <pre><code class="lang-js">
+label:
+    statements
+
+break labelname;
+continue labelname;</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-control-if-else -->
+        <h1 id="js-control-if-else">Control: if else</h1>
+        <pre><code class="lang-js">
+let option = 'Cheddar';
+if (option) {
+    // code
+} else {
+    // code
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-control-switch -->
+        <h1 id="js-control-switch">Control: switch</h1>
+        <pre><code class="lang-js">
+let option = 5;
+switch (option) {
+    case 1:
+        // code
+        break;
+    default:
+        // code
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-control-ternary -->
+        <h1 id="js-control-ternary">Control: ternary</h1>
+        <table>
+            <tr>
+                <th>?</th>
+                <td>if true</td>
+            </tr>
+            <tr>
+                <th>:</th>
+                <td>else</td>
+            </tr>
+        </table>
+        <pre><code class="lang-js">
+let condition = true;
+let x = condition ? 10 : 20;
+// 10
+</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-control-for -->
+        <h1 id="js-control-for">Control: for</h1>
+        <pre><code class="lang-js">
+for (begin; condition; step) {
+    // code
+}
+
+for (let i = 0; i &lt; 3; i++) { 
+    alert(i);
+}
+// shows 0, then 1, then 2</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-control-while -->
+        <h1 id="js-control-while">Control: while</h1>
+        <pre><code class="lang-js">
+while (condition) {
+    // code
+}
+
+let i = 0;
+while (i &lt; 3) { 
+    alert(i);
+    i++;
+}
+// shows 0, then 1, then 2</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-control-do-while -->
+        <h1 id="js-control-do-while">Control: do while</h1>
+        <pre><code class="lang-js">
+do {
+    // code
+} while (condition);
+
+let i = 0;
+do {
+  alert(i);
+  i++;
+} while (i &lt; 3);
+// shows 0, then 1, then 2</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-functions -->
+        <h1 id="js-functions">Functions</h1>
+        <p>if an argument is missing the parameter is <strong>undefined</strong></p>
+        <pre><code class="lang-js">
+// parameters
+function sum(a, b){
+    return a + b;
+}
+// arguments
+sum(2);
+// 2 + undefined</code></pre>
+        <h2>function expression</h2>
+        <pre><code class="lang-js">
+let sum = function(a, b){
+    return a + b;
+};</code></pre>
+        <h2>arrow functions</h2>
+        <p>short form of function expression</p>
+        <pre><code class="lang-js">
+let sum = (a, b) => a + b;
+
+// no parameters
+let x = () => {
+    ...
+};</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-functions-default -->
+        <h1 id="js-functions-default">Functions: Default parameters</h1>
+        <ul>
+            <li>value given if there is no argument</li>
+            <li>can use other functions as value</li>
+        </ul>
+        <pre><code class="lang-js">
+function showMessage(from, text = 'no message'){
+    alert( from + ": " + text );
+}
+
+showMessage('Erina'); // Erina: no message</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-functions-arguments -->
+        <h1 id="js-functions-arguments">Functions: arguments</h1>
+        <p>Contains <strong>all</strong> the arguments passed to the function</p>
+        <ul>
+            <li><strong>ES5</strong></li>
+            <li>Array-like object accessible inside functions</li>
+            <li>For non-arrow functions</li>
+            <li><strong>It's not an array</strong></li>
+            <li>Can use arguments.length</li>
+        </ul>
+        <pre><code class="lang-js">
+function myConcat(separator) {
+    let args = Array.prototype.slice.call(arguments, 1);
+    return args.join(separator);
+}
+
+myConcat(', ', 'red', 'orange', 'blue');
+// "red, orange, blue"</code></pre>
+        <h2>Related</h2>
+        <ul>
+            <li><a href="#js-arrays-array-like">Arrays: array-like</a></li>
+        </ul>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-functions-restparam -->
+        <h1 id="js-functions-restparam">Functions: ...restParam</h1>
+        <p>Contans the <strong>remaining</strong> arguments passed to the function</p>
+        <ul>
+            <li><strong>ES6</strong></li>
+            <li>Must be prefixed by ...</li>
+            <li>Must be the last parameter</li>
+            <li>Must be declared</li>
+            <li>It's a standard array</li>
+        </ul>
+        <pre><code class="lang-js">
+function myFun(a,  b, ...manyMoreArgs) {
+    console.log("a", a)
+    console.log("b", b)
+    console.log("manyMoreArgs", manyMoreArgs)
+}
+              
+myFun("one", "two", "three", "four", "five", "six")
+// a, one
+// b, two
+// manyMoreArgs, ["three", "four", "five", "six"]</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-console -->
+        <h1 id="js-console">JS: console</h1>
+        <h2>print</h2>
+        <pre><code class="lang-js">
+console.log('text');</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-alert -->
+        <h1 id="js-alert">JS: alert</h1>
+        <p>popup window</p>
+        <pre><code class="lang-js">
+alert('Hello');</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-prompt -->
+        <h1 id="js-prompt">JS: prompt</h1>
+        <ul>
+            <li>input from user</li>
+            <li>message and default are optional</li>
+        </ul>
+        <p>input from user</p>
+        <pre><code class="lang-js">
+// string
+let str = prompt('message', 'default');
+
+// number
+let test = parseInt(
+    prompt('message', 'default')
+);</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-events -->
+        <h1 id="js-events">JS: events</h1>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;button&gt; text &lt;/button&gt;</code></pre>
+        <p>file.js</p>
+        <pre><code class="lang-js">
+const btn = document.querySelector('button');</code></pre>
+        <h2>add event</h2>
+        <pre><code class="lang-js">
+btn.addEventListener('click', function);
+function() { ... }</code></pre>
+        <h2>remove event</h2>
+        <pre><code class="lang-js">
+btn.removeEventListener('click', function);</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-classes -->
+        <h1 id="js-classes">JS: classes</h1>
+        <pre><code class="lang-js">
+class Summoner {
+    constructor(aeons) {
+        this.aeons = aeons;
+    }
+}</code></pre>
+        <pre><code class="lang-js">
+class Waifu extends Summoner {
+    constructor(name, age, aeons) {
+        super(aeons);
+        this.name = name;
+        this.age = age;
+    }
+       
+    bio() {	
+        alert('Name: ' + this.name 
+            + '\nAge: ' + this.age 
+            + '\nAeons: ' + this.aeons);
+    }
+      
+    get aeons() { 
+        return this._aeons;
+    }
+      
+    set aeons(_aeons) {	
+        this._aeons = _aeons;
+    }      			
+}</code></pre>
+        <pre><code class="lang-js">
+let waifu = new Waifu('Yuna', 19, ['Valefor', 'Ifrit']);
+waifu.aeons;
+waifu.aeons.push('Shiva');
+waifu.bio();</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-apis -->
+        <h1 id="js-apis">JS: apis</h1>
+        <ul>
+            <li>Application Programming Interfaces</li>
+            <li>Defines interactions between software</li>
+        </ul>
+        <h2>browser apis</h2>
+        <p>built into the browser</p>
+        <table>
+            <tr>
+                <th>DOM</th>
+                <td>
+                    <ul>
+                        <li>Document Object Model</li>
+                        <li>allows to manipulate HTML and CSS</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Geolocation</th>
+                <td>retrieves geographical information</td>
+            </tr>
+            <tr>
+                <th>
+                    <ul>
+                        <li>Canvas</li>
+                        <li>WebGL</li>
+                    </ul>
+                </th>
+                <td>allows to create animated 2D and 3D graphics.</td>
+            </tr>
+            <tr>
+                <th>
+                    <ul>
+                        <li>HTMLMediaElement</li>
+                        <li>WebRTC</li>
+                    </ul>
+                </th>
+                <td>Multimedia APIs</td>
+            </tr>
+        </table>
+        <h2>third party apis</h2>
+        <table>
+            <tr>
+                <th>Twitter api</th>
+                <td>twitter interaction</td>
+            </tr>
+            <tr>
+                <th>Google maps api</th>
+                <td>embed maps into your website</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-use -->
+        <h1 id="js-use">JS: use</h1>
+        <h2>inline</h2>
+        <ul>
+            <li>single element</li>
+            <li>attribute in tag</li>
+        </ul>
+        <p></p>
+        <pre><code class="lang-html">
+&lt;button onclick="alert('hi');"&gt;&lt;/button&gt;</code></pre>
+        <h2>internal</h2>
+        <ul>
+            <li>single page</li>
+            <li>inside head tag</li>
+        </ul>
+        <pre><code class="lang-html">
+&lt;head&gt;
+    &lt;script&gt; ... &lt;/script&gt;
+&lt;/head&gt;</code></pre>
+        <h2>external</h2>
+        <ul>
+            <li>many pages</li>
+            <li>linked in head tag</li>
+        </ul>
+        <pre><code class="lang-html">
+&lt;head&gt;
+    &lt;script src="script.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-script-load -->
+        <h1 id="js-script-load">JS: script load</h1>
+        <p>JS must be loaded in his own thread</p>
+        <h2>in file.js</h2>
+        <pre><code class="lang-js">
+document.addEventListener("DOMContentLoaded", function() { 
+    ... 
+});</code></pre>
+        <h2>in file.html</h2>
+        <dl>
+            <dt>defer</dt>
+            <dd>executed when the page has been loaded</dd>
+            <dd>for dependencies ( use of DOM, etc.. )</dd>
+            <dd>executed in order.</dd>
+        </dl>
+        <pre><code class="lang-html">
+&lt;script src="script.js" defer&gt;&lt;/script&gt;</code></pre>
+        <dl>
+            <dt>async</dt>
+            <dd>executed independently</dd>
+            <dd>no dependencies</dd>
+        </dl>
+        <pre><code class="lang-html">
+&lt;script src="script.js" async&gt;&lt;/script&gt;</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region js-queryselector -->
+        <h1 id="js-queryselector">JS: querySelector</h1>
+        <ul>
+            <li>gets html element</li>
+            <li>selector is like css</li>
+        </ul>
+        <pre><code class="lang-js">
+// selects first
+let x = document.querySelector(selector);
+
+// selects all
+let y = document.querySelectorAll(selector);</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+
+        <!-- #region -->
+        <h1 id=""></h1>
+        <pre><code class="lang-js">
+</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region -->
+        <h1 id=""></h1>
+        <pre><code class="lang-js">
+</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+    </main>
+</body>
+
+</html>

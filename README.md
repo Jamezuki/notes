@@ -1,1 +1,1 @@
-# Sass template
+# [Notes](https://jamezuki.github.io/notes/)

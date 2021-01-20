@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/icon.png" type="image/png">
+    <link rel="stylesheet" href="../../styles/master.css">
+    <script src="../../scripts/prism.js" defer></script>
+    <title>Node.js</title>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li><a href="../../index.html"><img src="../../images/home.png" alt="Index"></a></li>
+            <li><a href="index.html"><img src="../../images/index.png" alt="Index"></a></li>
+            <li>
+                <a href="https://github.com/Jamezuki/notes" target="_blank">
+                    <img src="../../images/github.png" alt="Github">
+                </a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <!-- #region node-js-basics -->
+        <h1 id="node-js-basics">Basics</h1>
+        <p>
+            <a href="https://github.com/nodesource/distributions" target="_blank">
+                https://github.com/nodesource/distributions
+            </a>
+        </p>
+        <pre><code class="lang-js">
+run index.js</code></pre>
+        <pre><code class="lang-js">
+node -v
+npm -v</code></pre>
+        <h2>.gitignore</h2>
+        <pre><code class="lang-bash">
+node_modules/</code></pre>
+        <h2>global modules</h2>
+        <table>
+            <tr>
+                <th>sass</th>
+                <td>npm install -g sass</td>
+            </tr>
+            <tr>
+                <th>nodemon</th>
+                <td>restarts Node app when file changes</td>
+            </tr>
+            <tr>
+                <th>live server</th>
+                <td>refresh browser when file changes</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region node-js-nvm -->
+        <h1 id="node-js-nvm">nvm</h1>
+        <p>Tool to switch between different node versions.</p>
+        <p><a href="https://github.com/nvm-sh/nvm" target="_blank">https://github.com/nvm-sh/nvm</a></p>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region node-js-npm -->
+        <h1 id="node-js-npm">npm</h1>
+        <ul>
+            <li>node package manager</li>
+        </ul>
+        <pre><code class="lang-js">
+npm -v</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region node-js-config-->
+        <h1 id="node-js-config">config</h1>
+        <h2>set</h2>
+        <pre><code class="lang-js">
+npm config set init-author-name "James Layne"
+npm config set init-license "MIT"</code></pre>
+        <h2>get</h2>
+        <pre><code class="lang-js">
+npm config get init-author-name</code></pre>
+        <h2>defaults</h2>
+        <pre><code class="lang-js">
+npm config delete init-author-name</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region node-js-init -->
+        <h1 id="node-js-init">init</h1>
+        <p>in project directory:</p>
+        <h2>manual</h2>
+        <pre><code class="lang-js">
+npm init</code></pre>
+        <h2>auto</h2>
+        <pre><code class="lang-js">
+npm init -y</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region node-js-install -->
+        <h1 id="node-js-install">install</h1>
+        <table>
+            <tr>
+                <th>--save</th>
+                <td>adds to package.json</td>
+            </tr>
+            <tr>
+                <th>--save-dev</th>
+                <td>dev dependencies</td>
+            </tr>
+            <tr>
+                <th class="t-center">-g</th>
+                <td>global install</td>
+            </tr>
+        </table>
+        <pre><code class="lang-js">
+npm install 'package'
+
+/* before npm 5.0 */
+npm install 'package' --save</code></pre>
+        <h2>dev dependencies</h2>
+        <p>not deployed to production</p>
+        <pre><code class="lang-js">
+npm install 'package' --save-dev</code></pre>
+        <h2>global</h2>
+        <p>for modules you want to use in the command line</p>
+        <ul>
+            <li>installs on machine</li>
+            <li>not package.json</li>
+            <li>not node_modules</li>
+        </ul>
+        <pre><code class="lang-js">
+npm install -g 'package'
+
+/* shows global install dir */
+npm root -g</code></pre>
+        <h2>specific version</h2>
+        <pre><code class="lang-js">
+npm install 'package@version'
+
+/* example */
+npm install lodash@4.17.3 --save</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region node-js-uninstall -->
+        <h1 id="node-js-uninstall">uninstall</h1>
+        <pre><code class="lang-js">
+npm uninstall 'package'
+
+/* before npm 5.0 */
+npm uninstall 'package' --save</code></pre>
+        <h2>dev dependencies</h2>
+        <pre><code class="lang-js">
+npm uninstall 'package' --save-dev</code></pre>
+        <h2>global</h2>
+        <pre><code class="lang-js">
+npm uninstall -g 'package'</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region node-js-update -->
+        <h1 id="node-js-update">update</h1>
+        <pre><code class="lang-js">
+npm update 'package'</code></pre>
+        <h2>versioning</h2>
+        <p>package.json</p>
+        <pre><code class="lang-js">
+"package": "^4.17.4"</code></pre>
+        <p><img src="../../images/node-js/patch.png" alt="patch.png"></p>
+        <table>
+            <tr>
+                <th class="t-center">~</th>
+                <td>patch version</td>
+            </tr>
+            <tr>
+                <th class="t-center">^</th>
+                <td>
+                    <p>default</p>
+                    <ul>
+                        <li>minor version</li>
+                        <li>patch version</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th class="t-center">*</th>
+                <td>all versions</td>
+            </tr>
+            <tr>
+                <th class="t-center">none</th>
+                <td>installs exact version</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region node-js-list -->
+        <h1 id="node-js-list">list</h1>
+        <pre><code class="lang-js">
+/* show all dependencies */
+npm list
+
+/* top level dependencies 1, 2, .. */
+npm list --depth 0</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region node-js-index-js -->
+        <h1 id="node-js-index-js">index.js</h1>
+        <p>index.js</p>
+        <pre><code class="lang-js">
+const 'name' = require('module');</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region node-js-package-json -->
+        <h1 id="node-js-package-json">package.json</h1>
+        <pre><code class="lang-js">
+/* downloads all dependencies */
+npm install	
+
+/* downloads non dev dependencies */
+npm install --production</code></pre>
+        <h2>scripts</h2>
+        <p>package.json</p>
+        <pre><code class="lang-js">
+"scripts": {
+    "start": "node index.js",
+    "server": "live-server",
+    "sass": "sass --style=compressed --no-source-map 
+--watch styles/sass/master.scss styles/master.css"
+}</code></pre>
+<ul>
+    <li>npm start</li>
+    <li>npm run server</li>
+    <li>npm run sass</li>
+</ul>
+        <hr>
+        <!-- #endregion -->
+
+
+
+        <!-- #region -->
+        <h1 id=""></h1>
+        <pre><code class="lang-js">
+</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region -->
+        <h1 id=""></h1>
+        <pre><code class="lang-js">
+</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+    </main>
+</body>
+
+</html>

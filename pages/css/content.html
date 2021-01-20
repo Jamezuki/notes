@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/icon.png" type="image/png">
+    <link rel="stylesheet" href="../../styles/master.css">
+    <script src="../../scripts/prism.js" defer></script>
+    <title>CSS</title>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li><a href="../../index.html"><img src="../../images/home.png" alt="Index"></a></li>
+            <li><a href="index.html"><img src="../../images/index.png" alt="Index"></a></li>
+            <li>
+                <a href="https://github.com/Jamezuki/notes" target="_blank">
+                    <img src="../../images/github.png" alt="Github">
+                </a>
+            </li>
+        </ul>
+    </header>
+    <main>
+
+        <!-- #region css-theory -->
+        <h1 id="css-theory">Theory</h1>
+        <ul>
+            <li>Cascading Style Sheets</li>
+            <li>Presentation</li>
+        </ul>
+        <h2>Syntax</h2>
+        <p>selector = HTML element to style.</p>
+        <pre><code class="lang-css">
+// comment
+/* block comment */
+		
+selector1, selector2 {
+    property: value;
+}</code></pre>
+        <h2>Properties</h2>
+        <table>
+            <tr>
+                <th>Rules</th>
+                <td>selector { property: value; }</td>
+            </tr>
+            <tr>
+                <th>Cascade</th>
+                <td>The last rule is stronger.</td>
+            </tr>
+            <tr>
+                <th>Specificity</th>
+                <td>The more specific the stronger.</td>
+            </tr>
+            <tr>
+                <th>Inheritance</th>
+                <td>Rules can be inherited.</td>
+            </tr>
+        </table>
+        <h2>Override</h2>
+        <ul>
+            <li>browsers read CSS from top to bottom</li>
+            <li>ids overrides classes</li>
+            <li>inline styles overrides ids and classes</li>
+            <li>!important overrides everything</li>
+        </ul>
+        <h2>Lifecycle</h2>
+        <ol>
+            <li>Browser converts HTML to DOM(Document Object Model).</li>
+            <li>Browser loads the resources (CSS, JS, media).</li>
+            <li>Browser attaches the style to DOM.</li>
+            <li>Browser paints page.</li>
+        </ol>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-how-to-use -->
+        <h1 id="css-how-to-use">How to use</h1>
+        <h2>Inline</h2>
+        <p>style attribute inside HTML elements.</p>
+        <ul>
+            <li>Single html element</li>
+        </ul>
+        <pre><code class="lang-html">
+&lt;tag style="property:value;"&gt; value &lt;/tag&gt;</code></pre>
+        <h2>Internal</h2>
+        <p>style tag in the head section.</p>
+        <ul>
+            <li>Single page</li>
+        </ul>
+        <pre><code class="lang-html">
+&lt;head&gt;
+    &lt;style&gt;
+        body {background-color: powderblue;}
+        h1 {color: blue;}
+        p {color: red;}
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+        <h2>External</h2>
+        <p>link tag in head section.</p>
+        <ul>
+            <li>Multiple pages</li>
+        </ul>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+        <p>style.css</p>
+        <pre><code class="lang-css">
+h1 {
+    color: blue;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-box-model-->
+        <h1 id="css-box-model">Box model</h1>
+        <p><img src="../../images/css/box.png" alt="box model"></p>
+        <h2>Box fix</h2>
+        <pre><code class="lang-css">
+html {
+    box-sizing: border-box;
+}
+                        
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}</code></pre>
+        <h2>margin collapse</h2>
+        <p>The top and bottom margins of blocks are sometimes combined (collapsed) into a single margin whose size is
+            the largest of the individual margins.</p>
+        <p>Note that the margins of floating and absolutely positioned elements never collapse.</p>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-colors -->
+        <h1 id="css-colors">Colors</h1>
+        <table>
+            <tr>
+                <th>color</th>
+                <td>content</td>
+            </tr>
+            <tr>
+                <th>background</th>
+                <td>container</td>
+            </tr>
+            <tr>
+                <th>Hex</th>
+                <td>
+                    <ul>
+                        <li>#rrggbb</li>
+                        <li>#rrggbbaa</li>
+                        <li>#333</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>RGB</th>
+                <td>
+                    <ul>
+                        <li>rgb(255, 0, 0)</li>
+                        <li>rgb(255, 0, 0, 0.5)</li>
+                        <li>rgb(100%, 0, 0, 50%)</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <h2>linear-gradient</h2>
+        <div id="css-colors-linear-gradient"></div>
+        <ul>
+            <li>linear-gradient(dir, color1, color2, ...);</li>
+            <li>linear-gradient(35deg, #333, #fff);</li>
+        </ul>
+        <h2>HSL</h2>
+        <p><img src="../../images/css/hsl.png" alt="hsl.png"></p>
+        <p><img src="../../images/css/color-wheel.png" alt="color-wheel.png"></p>
+        <table>
+            <tr>
+                <th>Hue</th>
+                <td>
+                    <ul>
+                        <li>color</li>
+                        <li>0 - 360</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Saturation</th>
+                <td>0 - 100%</td>
+            </tr>
+            <tr>
+                <th>Lightness</th>
+                <td>0 - 100%</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-variables -->
+        <h1 id="css-variables">Variables</h1>
+        <ul>
+            <li>fallback is optional</li>
+        </ul>
+        <h2>Local</h2>
+        <pre><code class="lang-css">
+parent {
+    --variable: value;
+}
+
+descendant {
+    property: var(--variable, fallback);
+}</code></pre>
+        <h2>Global</h2>
+        <pre><code class="lang-css">
+:root {
+    --variable: value;
+}
+  
+selector {
+    property: var(--variable, fallback);
+}</code></pre>
+        <h2>IE Fallback</h2>
+        <pre><code class="lang-css">
+selector {
+    property: fallback;
+    property: var(--variable);
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-display -->
+        <h1 id="css-display">display</h1>
+        <p><img src="../../images/css/display.png" alt="display.png"></p>
+        <table>
+            <tr>
+                <td class="t-hide"></td>
+                <th class="t-center">inline</th>
+                <th class="t-center">block</th>
+                <th class="t-center">inline-block</th>
+            </tr>
+            <tr>
+                <th>
+                    margin-left<br>
+                    padding-left
+                </th>
+                <td class="t-center">&check;</td>
+                <td class="t-center">&check;</td>
+                <td class="t-center">&check;</td>
+            </tr>
+            <tr>
+                <th>
+                    margin-right<br>
+                    padding-right
+                </th>
+                <td class="t-center">&check;</td>
+                <td class="t-center">&check;</td>
+                <td class="t-center">&check;</td>
+            </tr>
+            <tr>
+                <th>
+                    margin-top<br>
+                    padding-top
+                </th>
+                <td class="t-center"></td>
+                <td class="t-center">&check;</td>
+                <td class="t-center">&check;</td>
+            </tr>
+            <tr>
+                <th>
+                    margin-bottom<br>
+                    padding-bottom
+                </th>
+                <td class="t-center"></td>
+                <td class="t-center">&check;</td>
+                <td class="t-center">&check;</td>
+            </tr>
+            <tr>
+                <th>width</th>
+                <td class="t-center"></td>
+                <td class="t-center">full if not defined</td>
+                <td class="t-center">&check;</td>
+            </tr>
+            <tr>
+                <th>height</th>
+                <td class="t-center"></td>
+                <td class="t-center">&check;</td>
+                <td class="t-center">&check;</td>
+            </tr>
+            <tr>
+                <th>line break</th>
+                <td class="t-center"></td>
+                <td class="t-center">&check;</td>
+                <td class="t-center"></td>
+            </tr>
+            <tr>
+                <th>side elements</th>
+                <td class="t-center">&check;</td>
+                <td class="t-center"></td>
+                <td class="t-center">&check;</td>
+            </tr>
+        </table>
+        <h2>display: table</h2>
+        <ul>
+            <li>adjust size to fit its content</li>
+        </ul>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-position -->
+        <h1 id="css-position">position</h1>
+        <p><img src="../../images/css/position.png" alt="position.png"></p>
+        <h2>position: static</h2>
+        <ul>
+            <li>Default</li>
+            <li>Not positioned</li>
+        </ul>
+        <h2>position: relative</h2>
+        <pre><code class="lang-css">
+div {
+    position: relative;
+    left: 30px;
+    top: -25px;
+}</code></pre>
+        <ul>
+            <li>Positioned relative to its normal position</li>
+            <li>top, right, bottom, left</li>
+        </ul>
+        <h2>position: fixed</h2>
+        <pre><code class="lang-css">
+header {
+    position: fixed;
+    top: 0;
+}
+            
+body {
+    margin-top: 50px;
+}
+        
+h1 {
+    // Offset anchor for fixed header
+    padding-top: 50px;
+    margin-top: -50px;
+}</code></pre>
+        <ul>
+            <li>Positioned relative to viewport</li>
+            <li>Removes the element from the normal flow</li>
+            <li>top, right, bottom, left</li>
+        </ul>
+        <h2>position: absolute</h2>
+        <pre><code class="lang-css">
+#container {
+    position: relative;
+}
+        
+nav {
+    position: absolute;
+    left: 0;
+}</code></pre>
+        <ul>
+            <li>Relative to positioned parent container</li>
+            <li>Uses body if no positioned parent</li>
+            <li>Removes the element from the normal flow</li>
+            <li>top, right, bottom, left</li>
+        </ul>
+        <h2>position: sticky</h2>
+        <pre><code class="lang-css">
+header {
+    position: sticky;
+    top: 30px;
+}</code></pre>
+        <ul>
+            <li>Relative to scroll position</li>
+            <li>Toggles between relative and fixed</li>
+            <li>Stays in normal flow while relative</li>
+            <li>top, right, bottom, left</li>
+        </ul>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-responsive -->
+        <h1 id="css-responsive">Responsive</h1>
+        <h2>images</h2>
+        <pre><code class="lang-css">
+img {
+    max-width: 100%;
+    height: auto;
+}</code></pre>
+        <table>
+            <tr>
+                <th>max-width: 100%</th>
+                <td>never wider than the container</td>
+            </tr>
+            <tr>
+                <th>height: auto</th>
+                <td>keeps aspect ratio</td>
+            </tr>
+        </table>
+        <h2>relative units</h2>
+        <table>
+            <tr>
+                <th>rem</th>
+                <td>Relative to root font-size</td>
+            </tr>
+            <tr>
+                <th>em</th>
+                <td>Relative to element font-size</td>
+            </tr>
+            <tr>
+                <th>%</th>
+                <td>relative to container</td>
+            </tr>
+            <tr>
+                <th>vw</th>
+                <td>viewport width</td>
+            </tr>
+            <tr>
+                <th>vh</th>
+                <td>viewport height</td>
+            </tr>
+            <tr>
+                <th>vmin</th>
+                <td>viewport minimum dimension</td>
+            </tr>
+            <tr>
+                <th>vmax</th>
+                <td>viewport maximum dimension</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-media-queries -->
+        <h1 id="css-media-queries">Media queries</h1>
+        <pre><code class="lang-css">
+@media (max-width: 600px) {
+    .selector {
+        display: flex;
+    }
+}</code></pre>
+        <ul>
+            <li>max-width</li>
+            <li>min-width</li>
+        </ul>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-float -->
+        <h1 id="css-float">float</h1>
+        <img id="css-float-img" src="../../images/css/float.png" alt="float.png">
+        <p id="css-float-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem inventore aperiam
+            eum sed
+            perferendis ea saepe? Dolores architecto, rerum aperiam doloribus totam nulla eos error molestias, iure
+            nisi
+            soluta sed optio ducimus nesciunt ad vel a quia sit possimus asperiores? Enim eum ex nesciunt quaerat
+            recusandae, adipisci reprehenderit totam voluptatem.</p>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;img src="url" alt=""&gt;
+&lt;p&gt;Lorem50&lt;/p&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+img {
+    float: left;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-z-index -->
+        <h1 id="css-z-index">z-index</h1>
+        <p><img src="../../images/css/z-index.png" alt="z-index.png"></p>
+        <ul>
+            <li>for positioned elements</li>
+            <li>can be negative</li>
+        </ul>
+        <h2>Related</h2>
+        <ul>
+            <li><a href="#css-position">position</a></li>
+        </ul>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-box-shadow -->
+        <h1 id="css-box-shadow">box-shadow</h1>
+        <pre><code class="lang-css">
+.box {
+    box-shadow: offset-x offset-y
+    blur-radius spread-radius
+    color;
+}</code></pre>
+        <div id="css-box-shadow-ex">example</div>
+        <pre><code class="lang-css">
+.box {
+    box-shadow: 5px 5px 3px 3px #333;
+}</code></pre>
+        <table>
+            <tr>
+                <th>offset-x</th>
+                <td>horizontal shadow push</td>
+            </tr>
+            <tr>
+                <th>offset-y</th>
+                <td>vertical shadow push</td>
+            </tr>
+            <tr>
+                <th>blur-radius</th>
+                <td>optional</td>
+            </tr>
+            <tr>
+                <th>spread-radius</th>
+                <td>optional</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-useful -->
+        <h1 id="css-useful">Useful</h1>
+        <h2>outline</h2>
+        <ul>
+            <li>Removes focus outline</li>
+        </ul>
+        <pre><code class="lang-css">
+outline: none;</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-examples -->
+        <h1 id="css-examples">Examples</h1>
+        <h2>Button link</h2>
+        <a id="css-button-link-ex" href="#css-button-link">example</a>
+        <pre><code class="lang-css">
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+                  
+a:hover, a:active {
+    background-color: red;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-selectors-universal -->
+        <h1 id="css-selectors-universal">Selectors - Universal</h1>
+        <pre><code class="lang-css">
+* { }
+// Targets all elements</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-selectors-element -->
+        <h1 id="css-selectors-element">Selectors - Element</h1>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;p&gt;text&lt;/p&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+p { color: red; }
+// Targets all p elements</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-selectors-id-class -->
+        <h1 id="css-selectors-id-class">Selectors - id</h1>
+        <ul>
+            <li>ids are unique</li>
+        </ul>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;p id="text"&gt;text&lt;/p&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code  class="lang-css">
+#text { color: red; }
+// Targets element with id="text"</code></pre>
+        <h1>Selectors - class</h1>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;p class="c1"&gt;text1&lt;/p&gt;
+&lt;p class="c1"&gt;text2&lt;/p&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+.c1 { color: red; }
+// Targets all elements with c1 class</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-selectors-descendant -->
+        <h1 id="css-selectors-descendant">Selectors - Descendant</h1>
+        <div id="css-selectors-descendant-ex" class="css-example">
+            <p>descendant & child</p>
+            <div>
+                <p>descendant</p>
+            </div>
+            <p>descendant & child</p>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;div class="descendant"&gt;
+    &lt;p&gt;descendant & child&lt;/p&gt;
+    &lt;div&gt;
+        &lt;p&gt;descendant&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;p&gt;descendant & child&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+.descendant p { color: red; }
+// Targets all p inside class="descendant"</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-selectors-children -->
+        <h1 id="css-selectors-children">Selectors - Children</h1>
+        <div id="css-selectors-children-ex" class="css-example">
+            <p>descendant & child</p>
+            <div>
+                <p>descendant</p>
+            </div>
+            <p>descendant & child</p>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;div class="children"&gt;
+    &lt;p&gt;descendant & child&lt;/p&gt;
+    &lt;div&gt;
+        &lt;p&gt;descendant&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;p&gt;descendant & child&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+.children &gt; p { color: red; }
+// Targets direct p inside class="children"</code></pre>
+        <h1>Selectors - Child</h1>
+        <ul>
+            <li>:first-child</li>
+            <li>:last-child</li>
+            <li>:nth-child(n)
+                <ul>
+                    <li>even</li>
+                    <li>odd</li>
+                </ul>
+            </li>
+        </ul>
+        <div id="css-selectors-child-ex" class="css-example">
+            <p>child 1</p>
+            <p>child 2</p>
+            <p>child 3</p>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;div class="child"&gt;
+    &lt;p&gt;child 1&lt;/p&gt;
+    &lt;p&gt;child 2&lt;/p&gt;
+    &lt;p&gt;child 3&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+.child p:nth-child(3) { color: red; }
+// Targets third p inside class="child"</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-selectors-siblings -->
+        <h1 id="css-selectors-siblings">Selectors - Siblings</h1>
+        <div class="css-example">
+            <p>sibling</p>
+            <p id="css-selectors-siblings-ex">subject ~ p</p>
+            <p>sibling</p>
+            <p>sibling</p>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;div&gt;
+    &lt;p>sibling&lt;/p&gt;
+    &lt;p id="subject">subject ~ p&lt;/p&gt;
+    &lt;p>sibling&lt;/p&gt;
+    &lt;p>sibling&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+#subject ~ p {
+  color: red;
+}
+// Targets all forward p siblings</code></pre>
+        <h1>Selectors - Sibling</h1>
+        <div class="css-example">
+            <p>sibling</p>
+            <p id="css-selectors-sibling-ex">subject + p</p>
+            <p>sibling</p>
+            <p>sibling</p>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;div&gt;
+    &lt;p>sibling&lt;/p&gt;
+    &lt;p id="subject">subject + p&lt;/p&gt;
+    &lt;p>sibling&lt;/p&gt;
+    &lt;p>sibling&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+#subject + p {
+    color: red;
+}
+// Targets forward p sibling
+</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-selectors-state -->
+        <h1 id="css-selectors-state">Selectors - State</h1>
+        <ul>
+            <li>a:visited</li>
+            <li>a:hover</li>
+            <li>a:focus</li>
+        </ul>
+        <div id="css-selectors-state-ex" class="css-example">
+            <p>:hover</p>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;div id="subject"&gt;
+    &lt;p&gt;:hover&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+#subject:hover {
+    background: red;
+}
+// red when mouse hover
+</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-selectors-part -->
+        <h1 id="css-selectors-part">Selectors - Part</h1>
+        <ul>
+            <li>::first-line</li>
+            <li>::first-letter</li>
+            <li>::selection</li>
+            <li>::before</li>
+            <li>::after</li>
+        </ul>
+        <div class="css-example">
+            <p id="css-selectors-part-ex">::selection</p>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;div&gt;
+    &lt;p id="subject">::selection&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+#subject::selection {
+    background: red;
+}
+// red when selected</code></pre>
+        <h2>::before / ::after</h2>
+        <ul>
+            <li>add something before or after a selected element</li>
+            <li>must have a content property</li>
+        </ul>
+        <pre><code class="lang-css">
+.heart::after {
+    background-color: pink;
+    content: "";
+    border-radius: 50%;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-selectors-attribute -->
+        <h1 id="css-selectors-attribute">Selectors - Attribute</h1>
+        <table>
+            <tr>
+                <th>ele[attr]</th>
+                <td>elements with attr</td>
+            </tr>
+            <tr>
+                <th>ele[attr="value"]</th>
+                <td>matchs "value"</td>
+            </tr>
+            <tr>
+                <th>ele[attr*="value"]</th>
+                <td>contains "value"</td>
+            </tr>
+            <tr>
+                <th>ele[attr^="value"]</th>
+                <td>value preceded by "value"</td>
+            </tr>
+            <tr>
+                <th>ele[attr$="value"]</th>
+                <td>value followed by "value"</td>
+            </tr>
+            <tr>
+                <th>ele[attr~="value"]</th>
+                <td>"value" is one of its values</td>
+            </tr>
+        </table>
+        <div class="css-example">
+            <a href="#css-selectors-attribute">element[attr="value"]</a>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;a href="#selectors-attribute"&gt;
+    element[attr="value"]
+&lt;/a&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+a[href="#selectors-attribute"] {
+    color: purple;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-flexbox -->
+        <h1 id="css-flexbox">flexbox</h1>
+        <div id="css-flex-container">
+            <div class="css-flex-box">box 1</div>
+            <div class="css-flex-box">box 2</div>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;div id="container"&gt;
+    &lt;div class="box">box 1&lt;/div&gt;
+    &lt;div class="box">box 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+#container {
+    display: flex;
+    flex-direction: row;
+}
+      
+.box {
+    border: thin solid;
+    padding: 50px;
+}</code></pre>
+        <table>
+            <tr>
+                <th>display: flex</th>
+                <td>Element turns into a flex container</td>
+            </tr>
+            <tr>
+                <th>flex-direction</th>
+                <td>
+                    <ul>
+                        <li>row - default</li>
+                        <li>column</li>
+                        <li>row-reverse</li>
+                        <li>column-reverse</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-flex-justify -->
+        <h1 id="css-flex-justify">flexbox: justify-content</h1>
+        <ul>
+            <li>justify items around main axis</li>
+            <li>for flex container</li>
+        </ul>
+        <figure>
+            <figcaption> Horizontal main axis </figcaption>
+            <img src="../../images/css/flex-justify-content.png" alt="flex-justify-content.png">
+        </figure>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">Main axis</th>
+            </tr>
+            <tr>
+                <th>horizontal</th>
+                <td>flex-direction: row</td>
+            </tr>
+            <tr>
+                <th>vertical</th>
+                <td>flex-direction: column</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">value</th>
+            </tr>
+            <tr>
+                <th>center</th>
+                <td>Center, space on edges</td>
+            </tr>
+            <tr>
+                <th>flex-start</th>
+                <td>
+                    <ul>
+                        <li>default</li>
+                        <li>if flex-direction: row - aligns to left</li>
+                        <li>if flex-direction: column - aligns to top</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>flex-end</th>
+                <td>
+                    <ul>
+                        <li>if flex-direction: row - aligns to right</li>
+                        <li>if flex-direction: column - aligns to bottom</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>space-between</th>
+                <td>First and last pushed to edges</td>
+            </tr>
+            <tr>
+                <th>space-around</th>
+                <td>Half space on first and last</td>
+            </tr>
+            <tr>
+                <th>space-evenly</th>
+                <td>Full space evenly</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-flex-align -->
+        <h1 id="css-flex-align">felxbox: align</h1>
+        <ul>
+            <li>aligns elements around cross axis</li>
+        </ul>
+        <figure>
+            <figcaption> Vertical cross axis </figcaption>
+            <img src="../../images/css/flex-align-items.png" alt="flex-align-items.png">
+        </figure>
+        <p></p>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">Cross axis</th>
+            </tr>
+            <tr>
+                <th>vertical</th>
+                <td>flex-direction: row</td>
+            </tr>
+            <tr>
+                <th>horizontal</th>
+                <td>flex-direction: column</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">property</th>
+            </tr>
+            <tr>
+                <th>align-items</th>
+                <td>for flex container</td>
+            </tr>
+            <tr>
+                <th>align-self</th>
+                <td>for flex items</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">value</th>
+            </tr>
+            <tr>
+                <th>center</th>
+                <td>Center, space on edges</td>
+            </tr>
+            <tr>
+                <th>flex-start</th>
+                <td>
+                    <ul>
+                        <li>if flex-direction: row - aligns to top</li>
+                        <li>if flex-direction: column - aligns to left</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>flex-end</th>
+                <td>
+                    <ul>
+                        <li>if flex-direction: row - aligns to bottom</li>
+                        <li>if flex-direction: column - aligns to right</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>stretch</th>
+                <td>
+                    <ul>
+                        <li>default</li>
+                        <li>Fills the flex container</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>baseline</th>
+                <td>
+                    <p>like flex-start but aligns text baseline</p>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-flex-flex-wrap -->
+        <h1 id="css-flex-flex-wrap">flexbox: flex-wrap</h1>
+        <ul>
+            <li>Extra items move to new row or column</li>
+            <li>Break point depends on sizes</li>
+            <li>For flex container</li>
+        </ul>
+        <p><img src="../../images/css/flex-wrap.png" alt="flex-wrap.png"></p>
+        <table>
+            <tr>
+                <th>nowrap</th>
+                <td>default</td>
+            </tr>
+            <tr>
+                <th>wrap</th>
+                <td>
+                    <ul>
+                        <li>row = wraps top to bottom</li>
+                        <li>column = wraps left to right</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>wrap-reverse</th>
+                <td>
+                    <ul>
+                        <li>row = wraps bottom to top</li>
+                        <li>column = wraps right to left</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-flex-flex -->
+        <h1 id="css-flex-flex">flexbox: flex</h1>
+        <ul>
+            <li>flex-grow + flex-shrink + flex-basis</li>
+            <li>for flex items</li>
+        </ul>
+        <table>
+            <tr>
+                <th>flex-grow</th>
+                <td>
+                    <ul>
+                        <li>container &gt; items</li>
+                        <li>item grows</li>
+                        <li>number value</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>flex-shrink</th>
+                <td>
+                    <ul>
+                        <li>items &gt; container</li>
+                        <li>item shrinks</li>
+                        <li>number value</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>flex-basis</th>
+                <td>
+                    <ul>
+                        <li>sets the initial size</li>
+                        <li>unit value</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <pre><code class="lang-css">
+// For flex items
+
+/* unitless number: flex-grow */
+flex: 2;
+
+/* width/height: flex-basis */
+flex: 10em;
+flex: 30%;
+flex: min-content;
+
+/* flex-grow | flex-basis */
+flex: 1 30px;
+
+/* flex-grow | flex-shrink */
+flex: 2 2;
+
+/* flex-grow | flex-shrink | flex-basis */
+flex: 2 2 10%;</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-flex-order -->
+        <h1 id="css-flex-order">flexbox: order</h1>
+        <ul>
+            <li>Order of how flex items appear in the flex container</li>
+            <li>Can have negative values</li>
+            <li>For flex items</li>
+        </ul>
+        <pre><code class="lang-css">
+.container {
+    display: flex;
+}
+       
+.box {
+    order: 2;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-flex-examples -->
+        <h1 id="css-flex-examples">flexbox: Examples</h1>
+        <figure>
+            <figcaption>justify-content: flex-end + margin:auto</figcaption>
+            <img src="../../images/css/flex-ex1.png" alt="flex-ex1.png">
+        </figure>
+        <figure>
+            <figcaption>justify-content: center + margin:auto</figcaption>
+            <img src="../../images/css/flex-ex2.png" alt="flex-ex2.png">
+        </figure>
+        <figure>
+            <figcaption>align-self: flex-end + margin:auto</figcaption>
+            <img src="../../images/css/flex-ex3.png" alt="flex-ex3.png">
+        </figure>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-grid-template-rows-cols -->
+        <h1 id="css-grid-template-rows-cols">grid-template-rows/cols</h1>
+        <div id="css-grid-template-rows-cols-container">
+            <div id="css-grid-template-rows-cols-box1">
+                <p>box 1</p>
+            </div>
+            <div id="css-grid-template-rows-cols-box2">
+                <p>box 2</p>
+            </div>
+            <div id="css-grid-template-rows-cols-box3">
+                <p>box 3</p>
+            </div>
+            <div id="css-grid-template-rows-cols-box4">
+                <p>box 4</p>
+            </div>
+            <div id="css-grid-template-rows-cols-box5">
+                <p>box 5</p>
+            </div>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;div id="container"&gt;
+    &lt;div id="box1"&gt;box 1&lt;/div&gt;
+    &lt;div id="box2"&gt;box 2&lt;/div&gt;
+    &lt;div id="box3"&gt;box 3&lt;/div&gt;
+    &lt;div id="box4"&gt;box 4&lt;/div&gt;
+    &lt;div id="box5"&gt;box 5&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+#container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+      
+#box1 {
+    grid-row: 1/2;
+    grid-column: 1/4;
+}
+      
+#box2 {
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+      
+#box3 {
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+      
+#box4 {
+    grid-row: 2/3;
+    grid-column: 3/4;
+}
+      
+#box5 {
+    grid-row: 3/4;
+    grid-column: 1/4;
+}</code></pre>
+        <h2>grid-template-rows/columns</h2>
+        <ul>
+            <li>for grid container</li>
+        </ul>
+        <table>
+            <tr>
+                <th>number of parameters</th>
+                <td>number of rows/cols</td>
+            </tr>
+            <tr>
+                <th>value of parameters</th>
+                <td>width of each row/col</td>
+            </tr>
+            <tr>
+                <th>repeat(100, 50px)</th>
+                <td>100 rows/cols of 50px</td>
+            </tr>
+            <tr>
+                <th>repeat(auto-fill, 50px)</th>
+                <td>fill with rows/cols of 50px</td>
+            </tr>
+            <tr>
+                <th>repeat(auto-fit, 50px)</th>
+                <td>stretches rows/cols</td>
+            </tr>
+            <tr>
+                <th>minmax(50px, 200px)</th>
+                <td>limit row/col size</td>
+            </tr>
+        </table>
+        <p>example:</p>
+        <pre><code class="lang-css">
+/* 3 columns of 90px - 1fr */
+grid-template-columns: repeat(3, minmax(90px, 1fr));
+
+/* fill with rows of 60px - 1fr */
+grid-template-rows: repeat(auto-fill, minmax(60px, 1fr));</code></pre>
+        <h2>grid-row/column/area</h2>
+        <ul>
+            <li>for grid items</li>
+        </ul>
+        <table>
+            <tr>
+                <th>grid-row</th>
+                <td>
+                    <ul>
+                        <li>rows an item will consume</li>
+                        <li>grid-row: row1/row2</li>
+                        <li>grid-row: 1/2</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>grid-column</th>
+                <td>
+                    <ul>
+                        <li>columns an item will consume</li>
+                        <li>grid-column: col1/col2</li>
+                        <li>grid-column: 1/2</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>grid-area</th>
+                <td>
+                    <ul>
+                        <li>rows & columns</li>
+                        <li>grid-area: row1/col1/row2/col2</li>
+                        <li>grid-column: 1/1/2/2</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <p><img src="../../images/css/grid-lines.png" alt="grid-lines.png"></p>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-grid-template-areas -->
+        <h1 id="css-grid-template-areas">grid-template-areas</h1>
+        <div id="css-grid-template-areas-container">
+            <div id="css-grid-template-areas-box1">
+                <p>box 1</p>
+            </div>
+            <div id="css-grid-template-areas-box2">
+                <p>box 2</p>
+            </div>
+            <div id="css-grid-template-areas-box3">
+                <p>box 3</p>
+            </div>
+            <div id="css-grid-template-areas-box4">
+                <p>box 4</p>
+            </div>
+            <div id="css-grid-template-areas-box5">
+                <p>box 5</p>
+            </div>
+        </div>
+        <p>file.html</p>
+        <pre><code class="lang-html">
+&lt;div id="container"&gt;
+    &lt;div id="box1"&gt;box 1&lt;/div&gt;
+    &lt;div id="box2"&gt;box 2&lt;/div&gt;
+    &lt;div id="box3"&gt;box 3&lt;/div&gt;
+    &lt;div id="box4"&gt;box 4&lt;/div&gt;
+    &lt;div id="box5"&gt;box 5&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+#container {
+    display: grid;
+    grid-template-areas:
+        "box1 box1 box1"
+        "box2 box3 box4"
+        "box5 box5 box5";   
+}
+        
+#box1 {
+    grid-area: box1;
+}
+        
+#box2 {
+    grid-area: box2;
+}
+        
+#box3 {
+    grid-area: box3;
+}
+        
+#box4 {
+    grid-area: box4;
+}
+        
+#box5 {
+    grid-area: box5;
+}</code></pre>
+        <ul>
+            <li>words represents cells</li>
+            <li>quotations represents rows</li>
+            <li>Period ( . ) = empty cell</li>
+        </ul>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-grid-justify -->
+        <h1 id="css-grid-justify">grid: justify</h1>
+        <ul>
+            <li>justify cell content horizontally</li>
+        </ul>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">property</th>
+            </tr>
+            <tr>
+                <th>justify-items</th>
+                <td>for grid container</td>
+            </tr>
+            <tr>
+                <th>justify-self</th>
+                <td>for grid items</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">value</th>
+            </tr>
+            <tr>
+                <th>stretch</th>
+                <td>fill cell</td>
+            </tr>
+            <tr>
+                <th>center</th>
+                <td>center of cell</td>
+            </tr>
+            <tr>
+                <th>start</th>
+                <td>left of cell</td>
+            </tr>
+            <tr>
+                <th>end</th>
+                <td>right of cell</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-grid-align -->
+        <h1 id="css-grid-align">grid: align</h1>
+        <ul>
+            <li>aligns cell content vertically</li>
+        </ul>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">property</th>
+            </tr>
+            <tr>
+                <th>align-items</th>
+                <td>for grid container</td>
+            </tr>
+            <tr>
+                <th>align-self</th>
+                <td>for grid items</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">value</th>
+            </tr>
+            <tr>
+                <th>stretch</th>
+                <td>fill cell</td>
+            </tr>
+            <tr>
+                <th>center</th>
+                <td>center of cell</td>
+            </tr>
+            <tr>
+                <th>start</th>
+                <td>top of cell</td>
+            </tr>
+            <tr>
+                <th>end</th>
+                <td>bottom of cell</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-grid-gap -->
+        <h1 id="css-grid-gap">grid: grid-gap</h1>
+        <ul>
+            <li>For grid container</li>
+        </ul>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">property</th>
+            </tr>
+            <tr>
+                <th>grid-row-gap</th>
+                <td>all rows gap</td>
+            </tr>
+            <tr>
+                <th>grid-column-gap</th>
+                <td>all columns gap</td>
+            </tr>
+            <tr>
+                <th>grid-gap</th>
+                <td>rows columns gap</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-sass-basics -->
+        <h1 id="css-sass-basics">SASS: Basics</h1>
+        <ul>
+            <li>Syntactically Awesome StyleSheets</li>
+            <li>CSS Preprocessor</li>
+            <li>Adds features to CSS</li>
+        </ul>
+        <p>Sass files are compiled to regular CSS</p>
+        <table>
+            <tr>
+                <th>.scss</th>
+                <td>Use of brackets</td>
+            </tr>
+            <tr>
+                <th>.sass</th>
+                <td>Use of identation</td>
+            </tr>
+        </table>
+        <p>CSS imports require the browser to make multiple HTTP requests, Sass
+            imports are handled entirely during compilation.</p>
+        <h2>variables</h2>
+        <ul>
+            <li>Prefixed with "$"</li>
+        </ul>
+        <pre><code class="lang-css">
+$primary-color: #333;</code></pre>
+        <h2>nesting</h2>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+parent { 
+    property: value;
+}
+
+parent child {
+    property: value;
+}</code></pre>
+        <p>file.scss</p>
+        <pre><code class="lang-css">
+parent {
+    property: value;
+    child {
+        property: value;
+    }     
+}</code></pre>
+        <h2>arithmetic</h2>
+        <pre><code class="lang-css">
+@mixin hard-math($value) {
+    width: 600px / 960px * $value;
+}
+
+.box {
+    @include hard-math(30);
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-sass-setup -->
+        <h1 id="css-sass-setup">SASS: Setup</h1>
+        <h2>Node.js</h2>
+        <pre><code  class="lang-bash">
+npm install -g sass</code></pre>
+        <p>package.json script:</p>
+        <pre><code class="lang-js">"sass": "sass --style=compressed --no-source-map 
+--watch styles/sass/master.scss styles/master.css"</code></pre>
+        <p>to watch run in terminal:</p>
+        <pre><code class="lang-bash">
+npm run sass</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-sass-structure -->
+        <h1 id="css-sass-structure">SASS: Structure</h1>
+        <p>The sass compiler ignores underscore names</p>
+        <table>
+            <tr>
+                <th class="ti" colspan="2">directories</th>
+            </tr>
+            <tr>
+                <th>abstracts</th>
+                <td>_variables.scss, _functions.scss ..</td>
+            </tr>
+            <tr>
+                <th>base</th>
+                <td>_normalize.scss, _typography.scss ..</td>
+            </tr>
+            <tr>
+                <th>components</th>
+                <td>_buttons.scss ..</td>
+            </tr>
+            <tr>
+                <th>layout</th>
+                <td>_header.scss, _grid.scss ..</td>
+            </tr>
+            <tr>
+                <th>pages</th>
+                <td>_home.scss, _contact.scss ..</td>
+            </tr>
+            <tr>
+                <th>themes</th>
+                <td>_dark.scss, _light.scss ..</td>
+            </tr>
+            <tr>
+                <th>vendors</th>
+                <td>_bootstrap.scss, _prism.scss ..</td>
+            </tr>
+        </table>
+        <p>master.scss / main.scss</p>
+        <pre><code class="lang-css">
+@charset "UTF-8";
+
+@use "abstracts/variables";
+@use "base/normalize";    
+@use "vendors/prism";</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-sass-use -->
+        <h1 id="css-sass-use">SASS: @use</h1>
+        <p>_variables.scss</p>
+        <pre><code class="lang-css">
+$primary-color: #333;</code></pre>
+        <p>_base.scss</p>
+        <pre><code class="lang-css">
+@use 'variables';
+
+body {
+    color: variables.$primary-color;
+}</code></pre>
+        <p>main.scss</p>
+        <pre><code class="lang-css">
+@use 'variables';
+@use 'base';</code></pre>
+        <h2>Custom namespace</h2>
+        <pre><code class="lang-css">
+@use 'variables' as *;
+            
+body {
+    color: $primary-color;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-sass-mixin -->
+        <h1 id="css-sass-mixin">SASS: @mixin</h1>
+        <ul>
+            <li>DRY among unrelated selectors</li>
+            <li>Does not have return</li>
+        </ul>
+        <ul>
+            <li>@mixin</li>
+            <li>@include</li>
+        </ul>
+        <p>file.scss</p>
+        <pre><code class="lang-css">
+@mixin webfont() {
+    font-family: webfont, sans-serif;
+    font-weight: 700;
+}
+            
+.foo {
+    @include webfont();
+}
+            
+.bar {
+    @include webfont();
+}</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">                        
+.foo {
+    font-family: webfont, sans-serif;
+    font-weight: 700;
+}
+                        
+.bar {
+    font-family: webfont, sans-serif;
+    font-weight: 700;
+}</code></pre>
+        <h2>with parameters</h2>
+        <pre><code class="lang-css">
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}
+            
+.box {
+    @include transform(rotate(30deg));
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-sass-extend -->
+        <h1 id="css-sass-extend">SASS: @extend</h1>
+        <ul>
+            <li>DRY for related selectors</li>
+        </ul>
+        <ul>
+            <li>@extend</li>
+        </ul>
+        <table>
+            <tr>
+                <th>%</th>
+                <td>
+                    <ul>
+                        <li>placeholder</li>
+                        <li>not compiled</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <p>file.scss</p>
+        <pre><code class="lang-css">
+.message,
+%message-shared {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+}
+            
+.success {
+    @extend %message-shared;
+    border-color: green;
+}
+            
+.error {
+    @extend %message-shared;
+    border-color: red;
+}</code></pre>
+        <p>file.css</p>
+        <pre><code class="lang-css">
+.message,
+.success,
+.error {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+}
+                        
+.success {
+    border-color: green;
+}
+                        
+.error {
+    border-color: red;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-sass-function -->
+        <h1 id="css-sass-function">SASS: @function</h1>
+        <ul>
+            <li>@function</li>
+            <li>@return</li>
+        </ul>
+        <pre><code class="lang-css">
+@function pow($base, $exponent) {
+    $result: 1;
+    @for $i from 1 through $exponent {
+        $result: $result * $base;
+    }
+    @return $result;
+}
+          
+.sidebar {
+    float: left;
+    margin-left: pow(4, 3) * 1px;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-sass-conditionals -->
+        <h1 id="css-sass-conditionals">SASS: conditionals</h1>
+        <ul>
+            <li>@if</li>
+            <li>@else</li>
+            <li>@else if</li>
+        </ul>
+        <pre><code class="lang-css">
+@mixin theme-colors($light-theme: true) {
+    @if $light-theme {
+        background-color: $light-background;
+        color: $light-text;
+    } @else {
+        background-color: $dark-background;
+        color: $dark-text;
+    }
+}
+
+.banner {
+    @include theme-colors($light-theme: true);
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-sass-loops -->
+        <h1 id="css-sass-loops">SASS: loops</h1>
+        <h2>@for</h2>
+        <pre><code class="lang-css">
+$base-color: #036;
+
+@for $i from 1 through 3 {
+    ul:nth-child(3n + #{$i}) {
+        background: lighten($base-color, $i * 5%);
+    }
+}</code></pre>
+        <h2>@each</h2>
+        <pre><code class="lang-css">
+$sizes: 40px, 50px, 80px;
+
+@each $size in $sizes {
+    .icon-#{$size} {
+        font-size: $size;
+        height: $size;
+        width: $size;
+    }
+}</code></pre>
+        <h2>@while</h2>
+        <pre><code class="lang-css">
+$count: 0;
+
+@while $count &lt; 5 {
+    .length-#{$count} {
+        width: (10 * $count) + px;
+    }    
+    $count: $count + 1;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-compatibility-fit-content -->
+        <h1 id="css-compatibility-fit-content">Compatibility: fit-content</h1>
+        <pre><code class="lang-css">
+.item {
+    width: -moz-fit-content;
+    width: fit-content;
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-transform -->
+        <h1 id="css-transform">transform</h1>
+        <h2>scale</h2>
+        <pre><code class="lang-css">
+div:hover {
+    transform: scale(1.5);
+}</code></pre>
+        <h2>rotate</h2>
+        <pre><code class="lang-css">
+.heart {
+    transform: rotate(-45deg);
+}</code></pre>
+        <hr>
+        <!-- #endregion -->
+
+        <!-- #region css-animation -->
+        <h1 id="css-animation">animation</h1>
+        <div id="css-animation-ex"></div>
+        <dl>
+            <dt>animation</dt>
+            <dd>animation-duration</dd>
+            <dd>animation-timing-function</dd>
+            <dd>animation-iteration-count</dd>
+            <dd>animation-direction</dd>
+            <dd>animation-name</dd>
+        </dl>
+        <pre><code class="lang-css">
+#ball {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    animation: 2s linear infinite alternate ball;
+}
+            
+@keyframes ball {
+    0% {
+        background: #ddd;
+        left: 0;
+    }
+    100% {
+        background: #333;
+        left: 150px;
+    }
+}</code></pre>
+        <p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation" target="_blank">
+                MDN: animation
+            </a>
+        </p>
+        <hr>
+        <!-- #endregion -->
+    </main>
+</body>
+
+</html>

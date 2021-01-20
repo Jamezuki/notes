@@ -1,0 +1,42 @@
+@use '../base/variables' as *;
+
+table {
+    margin: 1rem 0;
+    color: $color-1;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border: thin solid;
+    ul {
+        margin: 0;
+        padding: 0 0 0 20px;
+    }
+}
+
+th {
+    background-color: $color-2;
+}
+
+td {
+    background-color: $color-3;
+}
+
+.ti {
+    color: $color-4;
+    background: $color-1;
+    text-align: center;
+    border: thin solid $color-1;
+}
+
+.t-hide {
+    background: none;
+    border: none;
+}
+
+.t-center {
+    text-align: center;
+}
